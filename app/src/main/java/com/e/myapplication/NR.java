@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -23,8 +24,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -34,7 +38,8 @@ import com.squareup.picasso.Picasso;
 public class NR extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 7;
     private static final int PICK_IMAGE_REQUESTT = 7;
-
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
     EditText name;
     ProgressBar pb,pb1;
     Button upload;
@@ -51,11 +56,35 @@ public class NR extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton GenderButton;
     int i;
-    String Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, Fnn, Mnn, sbll, t100,companyy,HoroscopeImage=null,profileImage=null;
+    String Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, Fnn, Mnn, sbll, t100,companyy,HoroscopeImage=null,profileImage=null,phonenumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nr);
+        sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
+        phonenumber=sharedPreferences.getString("phonenumber","");
+        /*FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(phonenumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount() == 0)
+                {
+                    Toast.makeText(NR.this,"new user ",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent i1=new Intent(NR.this,Matrimony_info.class);
+                    startActivity(i1);
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+*/
+        editor=sharedPreferences.edit();
     radioGroup =findViewById(R.id.radioGroup);
         Name = findViewById(R.id.Name);
         Age = findViewById(R.id.Age);
@@ -144,7 +173,7 @@ public class NR extends AppCompatActivity {
                             String idd = Matrimony_details.push().getKey();
                             //  String imageurl = uri.toString();
 
-                            up1 Image = new up1(Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, educationn, Mnn, Fnn, sbll, t100, companyy, HoroscopeImage, profileImage, Matrimony_details);
+                            up1 Image = new up1(Namee, Agee, Sexx, Heightt, Incomee, educationn, Jobb, educationn, Mnn, Fnn, sbll, phonenumber, companyy, HoroscopeImage, profileImage, Matrimony_details);
                             Matrimony_details.child(idd).setValue(Image);
                             HoroscopeImage=null;
                             profileImage=null;
@@ -158,32 +187,13 @@ public class NR extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"No filee selected",Toast.LENGTH_SHORT).show();
                     }
 
-
-
-
                 }
-
-
-
-
-
-
-
-
-
-
 
                 }
 
 
 
         });
-
-
-
-
-
-
 
     }
 

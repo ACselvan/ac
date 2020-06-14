@@ -27,7 +27,8 @@ public class Matrimony extends AppCompatActivity {
         t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Matrimony.this,Matrimonydisplay.class);
+                Intent i=new Intent(Matrimony.this,Matrimony_info.class);
+                // Intent i=new Intent(Matrimony.this,Matrimonydisplay.class);
                 startActivity(i);
 
             }

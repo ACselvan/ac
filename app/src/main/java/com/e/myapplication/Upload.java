@@ -1,7 +1,7 @@
 package com.e.myapplication;
 
 class Upload {
-String Name,Address,Timing,Contact_number,Category,Firmname,Description,Proprietor_name,horoscopedescription,imageurl;
+String Name,Address,Timing,Contact_number,Category,Firmname,Description,Proprietor_name,horoscopedescription,imageurl,city;
 
     public Upload(String name) {
         this.Name=name;
@@ -21,9 +21,28 @@ String Name,Address,Timing,Contact_number,Category,Firmname,Description,Propriet
         this.Proprietor_name=Proprietor_name;
     }
 
+    public Upload(String address, String contact_number, String category, String firmname, String description, String proprietor_name, String imageurl, String city) {
+        Address = address;
+        Contact_number = contact_number;
+        Category = category;
+        Firmname = firmname;
+        Description = description;
+        Proprietor_name = proprietor_name;
+        this.imageurl = imageurl;
+        this.city = city;
+    }
+
     public Upload(String horoscopedescription, String imageurl) {
         this.horoscopedescription = horoscopedescription;
         this.imageurl = imageurl;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getImageurl() {

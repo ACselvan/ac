@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.e.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".signup"></activity>
+        <activity android:name=".Matrimony_Edit"></activity>
+        <activity android:name=".Business_Edit" />
+        <activity android:name=".Business_Favourites" />
+        <activity android:name=".Matrimony_Favourite" />
+        <activity android:name=".JobList" />
+        <activity android:name=".Matrimony_info" />
+        <activity android:name=".Business_info" />
+        <activity android:name=".BusinessPortal" />
+        <activity android:name=".Work_Portal" />
+        <activity android:name=".logIn" />
+        <activity android:name=".signup" />
         <activity android:name=".main" />
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".signup2" />
