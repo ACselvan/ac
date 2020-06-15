@@ -7,7 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.jar.Attributes;
 
 class up1 {
-    String Name, Age, Sex, Height, Income, Education, Fathersname, Mothersname, Siblings, cellno,job,company,imageurl,profileImage;
+    String Name, Age, Sex, Height, Income, Education, Fathersname, Mothersname, Siblings, cellno,job,companyy,imageurl,profileImage;
     DatabaseReference dref;
 
     public up1(String name) {
@@ -29,7 +29,7 @@ class up1 {
         this.Siblings = sbll;
         this.cellno = t100;
         this.job=jobb;
-        this.company = company;
+        this.companyy = companyy;
         this.imageurl = imageurl;
         this.profileImage=profileImage;
         this.dref=matrimony_details;
@@ -59,12 +59,12 @@ class up1 {
         this.job = job;
     }
 
-    public String getCompany() {
-        return company;
+    public String getCompanyy() {
+        return companyy;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setCompanyy(String company) {
+        this.companyy = company;
     }
 
     public String getName() {

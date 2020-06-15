@@ -27,7 +27,7 @@ public class Employportal extends AppCompatActivity {
     DatabaseReference Employer_details;
     String Namee,Qualificationn,Addresss,Dttmm,Numm;
     TextView date_text,time_text;
-    String datechar,timechar;
+    String datechar,timechar,exp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,6 @@ public class Employportal extends AppCompatActivity {
         date_text=(TextView)findViewById(R.id.date_text);
         time_text=(TextView)findViewById(R.id.time_text);
         b1=findViewById(R.id.b1);
-
         Employer_details = FirebaseDatabase.getInstance().getReference("Employer_Details");
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +65,7 @@ public class Employportal extends AppCompatActivity {
                 Numm=q5.getText().toString().trim();
                 String id = Employer_details.push().getKey();
                 Dttmm="Date:"+datechar+",  time:"+timechar;
-                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm);
+                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp);
                 Employer_details.child(id).setValue(Employportalupload);
             }
         });
@@ -83,6 +82,7 @@ public class Employportal extends AppCompatActivity {
                     calendar1.set(Calendar.YEAR,year);
                     calendar1.set(Calendar.MONTH,month);
                     calendar1.set(Calendar.DATE,date);
+                    exp= (String) DateFormat.format("yyyyMMdd",calendar1);;
                      datechar= (String) DateFormat.format("EEEE,dd MMM yyyy",calendar1);
                     date_text.setText(datechar);
                 }

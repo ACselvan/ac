@@ -12,7 +12,15 @@ String Name,Address,Timing,Contact_number,Category,Firmname,Description,Propriet
     public Upload() {
     }
 
-    public Upload(String Firmname, String address, String contact_number, String Category,String Description,String Proprietor_name) {
+    public Upload(String address, String firmname, String description, String proprietor_name, String city) {
+        Address = address;
+        Firmname = firmname;
+        Description = description;
+        Proprietor_name = proprietor_name;
+        this.city = city;
+    }
+
+    public Upload(String Firmname, String address, String contact_number, String Category, String Description, String Proprietor_name) {
         this.Firmname = Firmname;
         this.Category=Category;
         this.Address=address;
