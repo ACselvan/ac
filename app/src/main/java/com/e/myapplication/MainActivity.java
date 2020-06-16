@@ -24,6 +24,7 @@ Intent i=new Intent(MainActivity.this,Main2Activity.class);
 startActivity(i);
         }
     });
+       //arun issaki raj
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

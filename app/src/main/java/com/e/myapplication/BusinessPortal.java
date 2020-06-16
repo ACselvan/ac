@@ -45,7 +45,7 @@ Button  add_business;
         add_business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sdf = new SimpleDateFormat("ddMMyyyy");
+                sdf = new SimpleDateFormat("yyyyMMdd");
                 currentDateandTime = sdf.format(new Date());
 
                 query.addValueEventListener(new ValueEventListener() {
