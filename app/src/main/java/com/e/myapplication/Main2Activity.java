@@ -81,7 +81,7 @@ Button signout,date;
             @Override
             public void onClick(View v) {
 
-                 sdf = new SimpleDateFormat("ddMMyyyy");
+                 sdf = new SimpleDateFormat("yyyyMMdd");
                  currentDateandTime = sdf.format(new Date());
 
                 query.addValueEventListener(new ValueEventListener() {

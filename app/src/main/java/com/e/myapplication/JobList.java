@@ -53,9 +53,9 @@ public class JobList extends AppCompatActivity {
 
 
                     emp = dataSnapshot1.getValue(Employer_Details.class);
-                   // if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(emp.getExp())) {
+                    if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(emp.getExp())) {
                     list.add(emp);
-                    // }
+                    }
 
                 }
                 adapter=new ViewHolderJob(JobList.this,list);
