@@ -58,7 +58,7 @@ Button login_auth,resend_auth,sign_up_auth;
         login_auth=(Button)findViewById(R.id.login_auth);
        query=FirebaseDatabase.getInstance().getReference("user");
         resend_auth=(Button)findViewById(R.id.resend_auth);
-       // sign_up_auth=(Button)findViewById(R.id.sign_up_auth);
+
         login_auth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,37 +120,7 @@ Button login_auth,resend_auth,sign_up_auth;
                 Toast.makeText(getApplicationContext(),"log out",Toast.LENGTH_SHORT).show();
             }
         });
-        /*sign_up_auth.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference("user").orderByChild("mobile").equalTo("9994026559").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.getChildrenCount() == 0)
-                        {
-                            Toast.makeText(getApplicationContext(),"new user",Toast.LENGTH_SHORT).show();
-                            String id=mDatabase.push().getKey();
-                            mDatabase.child(id);
-                            mDatabase.child(id).child("id").setValue(id);
-                            mDatabase.child(id).child("name").setValue("chithrai");
-                            mDatabase.child(id).child("mobile").setValue("1111111111");
-                            mDatabase.child(id).child("mat_exp").setValue("0");
-                            mDatabase.child(id).child("job_exp").setValue("0");
-                            mDatabase.child(id).child("busss_exp").setValue("0");
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),"existing user",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });*/
+        
     }
 
 
