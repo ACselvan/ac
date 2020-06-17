@@ -179,7 +179,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
                         usersGender="Female";
                         check(usersGender);
                     }
-                    else
+                    else if (up.getSex().equals("Female"))
                     {
                         usersGender="Male";
                         check(usersGender);

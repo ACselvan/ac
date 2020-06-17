@@ -108,8 +108,29 @@ List<String> CategoryList = new ArrayList<>();
                             //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
                             if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(user1.busss_exp))
                             {
-                                Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
-                                startActivity(i);
+                                FirebaseDatabase.getInstance().getReference("Business_Details").orderByChild("contact_number").equalTo(a1).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.getChildrenCount() == 0)
+                                        {
+                                            Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
+                                            startActivity(i);
+
+                                        }else
+                                        {
+                                            Intent i=new Intent(Business_catalogue.this,Business_Edit.class);
+                                            startActivity(i);
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                                /*Intent i=new Intent(Business_catalogue.this,Getting_Business_details.class);
+                                startActivity(i);*/
                             }
                             else if (verify.equals("0"))
                             {

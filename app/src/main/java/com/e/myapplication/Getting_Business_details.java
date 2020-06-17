@@ -1,10 +1,12 @@
 package com.e.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -123,14 +125,27 @@ public class Getting_Business_details extends AppCompatActivity {
           //  Timing=t9.getText().toString().trim();
                         Firmname=t10.getText().toString().trim();
             city=city_business.getText().toString();
-
-            String id=Business_details.push().getKey();
-             // Upload upload=new Upload(Firmname,Address,Contact_number,category,Description,Proprietor_name);
-                Upload upload=new Upload(Address,Contact_number,category,Firmname,Description,Proprietor_name,imageurl,city);
-              Business_details.child(id).setValue(upload);
-            Toast.makeText(getApplicationContext(),imageurl,Toast.LENGTH_SHORT).show();
+            if (!category.equals("")&&!Contact_number.equals("")&&!Proprietor_name.equals("")&&!Address.equals("")&&!Description.equals("")&&!Firmname.equals("")&&!city.equals("")) {
 
 
+                String id = Business_details.push().getKey();
+                // Upload upload=new Upload(Firmname,Address,Contact_number,category,Description,Proprietor_name);
+                Upload upload = new Upload(Address, Contact_number, category, Firmname, Description, Proprietor_name, imageurl, city);
+                Business_details.child(id).setValue(upload);
+                Toast.makeText(getApplicationContext(), imageurl, Toast.LENGTH_SHORT).show();
+            }
+else {
+                AlertDialog.Builder builder=new AlertDialog.Builder(Getting_Business_details.this);
+                builder.setTitle("Empty Field");
+                builder.setMessage("All Fields are required");
+                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.create().show();
+            }
 
 
 

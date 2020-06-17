@@ -79,6 +79,8 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
                     holder.iv.setVisibility(View.INVISIBLE);
                     holder.viewhoroscope.setVisibility(View.INVISIBLE);
                     holder.favourite.setVisibility(View.INVISIBLE);
+                    holder.view_details.setVisibility(View.INVISIBLE);
+
                 }else
                 {
                     holder.favourite.setBackgroundResource(R.drawable.favourite);
@@ -91,6 +93,14 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
 
             }
         });
+holder.view_details.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i1=new Intent(context,Matrimony_View_Details.class);
+        i1.putExtra("phonenumber",up.get(position).getCellno());
+        context.startActivity(i1);
+    }
+});
         holder.favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,7 +183,7 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
     public class myViewHolder extends RecyclerView.ViewHolder {
         TextView name,job,company,income,phonenumber;
         ImageView iv;
-        Button viewhoroscope,favourite;
+        Button viewhoroscope,favourite,view_details;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.name);
@@ -184,6 +194,8 @@ public class ViewHolderMatrimonyFavourite extends RecyclerView.Adapter<ViewHolde
             iv=(ImageView)itemView.findViewById(R.id.iv);
             viewhoroscope=(Button)itemView.findViewById(R.id.view_horoscope);
             favourite=(Button)itemView.findViewById(R.id.fav);
+            view_details=(Button)itemView.findViewById(R.id.view_details);
+
         }
     }
 }
