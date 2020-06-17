@@ -89,6 +89,14 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
 
             }
         });
+holder.view_details.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i1=new Intent(context,Matrimony_View_Details.class);
+        i1.putExtra("phonenumber",up.get(position).getCellno());
+        context.startActivity(i1);
+    }
+});
         holder.favourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,7 +177,7 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
     class myViewHolder extends RecyclerView.ViewHolder {
         TextView name,job,company,income,phonenumber;
         ImageView iv;
-        Button viewhoroscope,favourite;
+        Button viewhoroscope,favourite,view_details;
 
         myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -181,6 +189,7 @@ public class ViewHolderMatrimony extends RecyclerView.Adapter<ViewHolderMatrimon
             iv=(ImageView)itemView.findViewById(R.id.iv);
             viewhoroscope=(Button)itemView.findViewById(R.id.view_horoscope);
             favourite=(Button)itemView.findViewById(R.id.fav);
+            view_details=(Button)itemView.findViewById(R.id.view_details);
         }
     }
 }
