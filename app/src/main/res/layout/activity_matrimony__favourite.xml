@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/matrimony_favourite_drawer"
-    tools:context=".Matrimony_Favourite">
+    tools:context=".Matrimony_Favourite"
+    android:background="#fbf7ea"
+    >
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">

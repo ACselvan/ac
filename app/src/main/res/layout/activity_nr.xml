@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fbf7ea"
+
     tools:context=".NR">
 
 
@@ -323,9 +325,12 @@
 
             <Button
                 android:id="@+id/uploadHoroscope"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="upload horoscope"
+                android:background="@drawable/button"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 />
 
             <ProgressBar
@@ -352,9 +357,12 @@
 
             <Button
                 android:id="@+id/uploadimage"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:text="upload image" />
+                android:text="upload image"
+                android:background="@drawable/button"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
 
             <ProgressBar
                 android:id="@+id/pb1"
@@ -378,15 +386,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/button4"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:text="PROCEED TO PAYMENT"
-                />
-
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button"
+                android:text="PROCEED TO PAYMENT" />
 
 
         </LinearLayout>

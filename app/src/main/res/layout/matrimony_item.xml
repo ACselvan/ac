@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#f3e7be"
+    android:padding="35dp"
+    >
 
 
     <LinearLayout
@@ -42,7 +45,7 @@
             <TextView
                 android:id="@+id/company"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="20dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
 
@@ -97,13 +100,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
+                android:background="@drawable/button"
                 android:text="View Horoscope" />
                 <Button
                     android:id="@+id/fav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/ic_favorite_border_black_24dp" />
             </LinearLayout>
         </LinearLayout>

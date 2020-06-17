@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/businessfavourite_drawer"
-    tools:context=".Business_Favourites">
+    tools:context=".Business_Favourites"
+    android:background="#fbf7ea">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">

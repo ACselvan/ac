@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="#fbf7ea"
     tools:context=".Business_Edit">
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,9 +161,11 @@
 
             <Button
                 android:id="@+id/submit_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
                 android:text="upload"
+                android:background="@drawable/button"
                 android:layout_gravity="center"/>
 
         </LinearLayout>

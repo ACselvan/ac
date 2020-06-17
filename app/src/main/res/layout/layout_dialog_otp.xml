@@ -2,24 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f3e7be"
+    android:padding="50dp"
+
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+
     <TextView
         android:id="@+id/text_phone_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginLeft="30dp"
+        android:textSize="18dp"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:text="TextView"
         />
-<LinearLayout
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+
     >
     <TextView
         android:id="@+id/text_click_here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:layout_weight="2"
+        android:layout_weight="2"
         android:gravity="end"
+
         android:textColor="#0000FF"
         android:text="click here    "
         />
@@ -27,7 +63,11 @@ android:layout_weight="2"
         android:gravity="start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:layout_weight="1"
+        android:layout_weight="1"
+        android:textSize="15dp"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000000"
         android:text="to change number"
         />
 
@@ -50,11 +90,18 @@ android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
             android:text="resend otp"
             />
         <Button
             android:id="@+id/otp_verify"
             android:layout_weight="1"
+            android:background="@drawable/button"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -63,4 +110,10 @@ android:layout_weight="1"
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
+
+</LinearLayout>
 </LinearLayout>

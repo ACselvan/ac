@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".BusinessPortal">
+    tools:context=".BusinessPortal"
+    android:background="#fbf7ea"
+    android:padding="50">
 
     <Button
         android:id="@+id/add_business"
@@ -13,5 +15,6 @@
         android:layout_height="wrap_content"
         android:text="Add my Business"
         tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="42dp" />
+        tools:layout_editor_absoluteY="42dp"
+        android:background="@drawable/button"/>
 </LinearLayout>

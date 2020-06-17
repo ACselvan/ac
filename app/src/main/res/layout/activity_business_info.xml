@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/business_drawer"
-    tools:context=".Business_info">
+    tools:context=".Business_info"
+    android:background="#fbf7ea">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

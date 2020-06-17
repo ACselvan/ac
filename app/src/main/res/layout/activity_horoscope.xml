@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Gallery">
+    tools:context=".Gallery"
+    android:background="#fbf7ea"
+    >
 
     <TextView
         android:id="@+id/textView2"
@@ -65,7 +67,7 @@
         android:id="@+id/upload"
         android:layout_width="50mm"
         android:layout_height="wrap_content"
-
+        android:background="@drawable/button"
 
         android:layout_marginBottom="24dp"
 

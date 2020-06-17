@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Business_Image_Edit">
+    tools:context=".Business_Image_Edit"
+    android:background="#fbf7ea"
+    android:padding="50dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,10 +26,12 @@
 
         <Button
             android:id="@+id/get_image_business_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="get image"
-            android:layout_gravity="center"/>
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"/>
 
     </LinearLayout>
     <LinearLayout
@@ -38,9 +42,11 @@
 
         <Button
             android:id="@+id/upload_edit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="upload"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
             android:layout_gravity="center"/>
 
     </LinearLayout>
