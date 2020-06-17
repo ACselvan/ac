@@ -1,9 +1,11 @@
 package com.e.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -100,12 +102,33 @@ TextView mobile;
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                            snapshot.getRef().child("address").setValue(address.getText().toString());
-                            snapshot.getRef().child("category").setValue(spinner.getSelectedItem().toString());
-                            snapshot.getRef().child("city").setValue(city.getText().toString());
-                            snapshot.getRef().child("firmname").setValue(firmname.getText().toString());
-                            snapshot.getRef().child("proprietor_name").setValue(propriotorname.getText().toString());
-                            snapshot.getRef().child("description").setValue(descreiption.getText().toString());
+                            String address1=address.getText().toString();
+                            String category1=spinner.getSelectedItem().toString();
+                            String city1=city.getText().toString();
+                            String proprietor_name=propriotorname.getText().toString();
+                            String description1=descreiption.getText().toString();
+                            String firmname1=firmname.getText().toString();
+                            if (!address1.equals("")&&!category1.equals("")&&!city1.equals("")&&!proprietor_name.equals("")&&!description1.equals("")&&!firmname1.equals("")) {
+                                snapshot.getRef().child("address").setValue(address1);
+                                snapshot.getRef().child("category").setValue(category1);
+                                snapshot.getRef().child("city").setValue(city1);
+                                snapshot.getRef().child("firmname").setValue(firmname1);
+                                snapshot.getRef().child("proprietor_name").setValue(proprietor_name);
+                                snapshot.getRef().child("description").setValue(description1);
+                            }
+                            else
+                            {
+                                AlertDialog.Builder builder=new AlertDialog.Builder(Business_Edit.this);
+                                builder.setTitle("Empty Field");
+                                builder.setMessage("All Fields are required");
+                                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+                                builder.create().show();
+                            }
                         }
                     }
 

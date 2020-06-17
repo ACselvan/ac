@@ -56,6 +56,7 @@ public class ViewHolder extends RecyclerView.Adapter<ViewHolder.myViewHolder> {
             holder.conduct_number.setText(upload.get(position).getContact_number());
             holder.city.setText(upload.get(position).getCity());
             holder.address.setText(upload.get(position).getAddress());
+
         Picasso.with(context).load(upload.get(position).getImageurl()).into(holder.iv);
         FirebaseDatabase.getInstance().getReference("Business_fav").child(phonenumber).orderByChild("mobile").equalTo(upload.get(position).getContact_number()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -163,6 +164,7 @@ public class ViewHolder extends RecyclerView.Adapter<ViewHolder.myViewHolder> {
             conduct_number=(TextView)itemView.findViewById(R.id.conduct_number);
             city=(TextView)itemView.findViewById(R.id.city);
             address=(TextView)itemView.findViewById(R.id.address);
+
             iv=(ImageView)itemView.findViewById(R.id.iv);
             favourite=(Button)itemView.findViewById(R.id.business_fav);
         }
