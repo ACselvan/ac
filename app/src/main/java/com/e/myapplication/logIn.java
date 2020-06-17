@@ -58,7 +58,7 @@ Button login_auth,resend_auth,sign_up_auth;
         login_auth=(Button)findViewById(R.id.login_auth);
        query=FirebaseDatabase.getInstance().getReference("user");
         resend_auth=(Button)findViewById(R.id.resend_auth);
-        sign_up_auth=(Button)findViewById(R.id.sign_up_auth);
+       // sign_up_auth=(Button)findViewById(R.id.sign_up_auth);
         login_auth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
