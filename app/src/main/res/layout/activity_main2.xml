@@ -13,31 +13,44 @@ android:layout_weight="2"
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_weight="3"
-        android:padding="50dp"
+        android:padding="30dp"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_weight="4">
 
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/t1"
-                android:layout_gravity="center_horizontal"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
+                android:layout_height="match_parent" >
 
-                android:text="Business catalogue" />
-            <androidx.viewpager.widget.ViewPager
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                android:layout_width="match_parent"
-                android:id="@+id/view_pager"
-                android:layout_height="100dp"/>
+                    <TextView
+                        android:id="@+id/t1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+
+                        android:text="Business catalogue" />
+
+                    <androidx.viewpager.widget.ViewPager
+
+                        android:id="@+id/view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="165dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <com.viewpagerindicator.CirclePageIndicator
                 android:id="@+id/indicator"
                 android:layout_width="fill_parent"
@@ -47,8 +60,8 @@ android:layout_weight="2"
                 android:gravity="bottom"
                 android:padding="10dip"
                 app:centered="true"
-                app:fillColor="#df0623"
-                app:pageColor="#fff"
+                app:fillColor="#ff8000"
+                app:pageColor="#fbf7ea"
                 app:snap="false" />
         </LinearLayout>
 
@@ -56,20 +69,36 @@ android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/t2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
+            android:layout_marginTop="10dp"
 
-                android:text="Matrimony" />
-            <androidx.viewpager.widget.ViewPager
+            android:layout_weight="4">
 
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:id="@+id/view_pager1"
-                android:layout_height="100dp"/>
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/t2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+
+                        android:text="Matrimony" />
+
+                    <androidx.viewpager.widget.ViewPager
+
+                        android:id="@+id/view_pager1"
+                        android:layout_width="match_parent"
+                        android:layout_height="165dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <com.viewpagerindicator.CirclePageIndicator
                 android:id="@+id/indicator1"
                 android:layout_width="fill_parent"
@@ -79,8 +108,8 @@ android:layout_weight="2"
                 android:gravity="bottom"
                 android:padding="10dip"
                 app:centered="true"
-                app:fillColor="#df0623"
-                app:pageColor="#fff"
+                app:fillColor="#ff8000"
+                app:pageColor="#fbf7ea"
                 app:snap="false" />
         </LinearLayout>
 
@@ -89,20 +118,36 @@ android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/t3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
 
-                android:text="Job Portal" />
-            <androidx.viewpager.widget.ViewPager
+            android:layout_weight="4">
 
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:id="@+id/view_pager2"
-                android:layout_height="100dp"/>
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/t3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+
+                        android:text="Job Portal" />
+
+                    <androidx.viewpager.widget.ViewPager
+
+                        android:id="@+id/view_pager2"
+                        android:layout_width="match_parent"
+                        android:layout_height="165dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <com.viewpagerindicator.CirclePageIndicator
                 android:id="@+id/indicator2"
                 android:layout_width="fill_parent"
@@ -112,19 +157,15 @@ android:layout_weight="2"
                 android:gravity="bottom"
                 android:padding="10dip"
                 app:centered="true"
-                app:fillColor="#df0623"
-                app:pageColor="#fff"
+                app:fillColor="#ff8000"
+                app:pageColor="#fbf7ea"
                 app:snap="false" />
         </LinearLayout>
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+
 
         <Button
             android:id="@+id/signout"
@@ -132,19 +173,9 @@ android:layout_weight="2"
             android:layout_height="wrap_content"
             android:text="sign out"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button"/>
 
-        <Button
-            android:id="@+id/date"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:text="business catelogue"
-            android:layout_marginTop="20dp"
 
-            android:background="@drawable/button"
-            android:layout_gravity="center"
-            />
-    </LinearLayout>
 
 </LinearLayout>
