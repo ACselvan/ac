@@ -170,7 +170,7 @@ public class NR extends AppCompatActivity {
                    String id = Matrimony_details.push().getKey();
 
 
-                        if((HoroscopeImage!=null)&&(profileImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")) {
+                        if((HoroscopeImage!=null)&&(profileImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&!Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")) {
 
                             String idd = Matrimony_details.push().getKey();
                             //  String imageurl = uri.toString();

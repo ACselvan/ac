@@ -29,7 +29,7 @@ public class Employportal extends AppCompatActivity {
     DatabaseReference Employer_details;
     String Namee,Qualificationn,Addresss,Dttmm,Numm;
     TextView date_text,time_text;
-    String datechar,timechar,exp;
+    String datechar="",timechar="",exp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
