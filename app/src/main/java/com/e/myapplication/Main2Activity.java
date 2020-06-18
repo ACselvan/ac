@@ -65,42 +65,42 @@ Button signout,date;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        t1=findViewById(R.id.t1);
-        t2=findViewById(R.id.t2);
-        t3=findViewById(R.id.t3);
+        t1 = findViewById(R.id.t1);
+        t2 = findViewById(R.id.t2);
+        t3 = findViewById(R.id.t3);
         slideLists = new ArrayList<>();
-        sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
-         a1=sharedPreferences.getString("phonenumber","");
-        databaseReference=FirebaseDatabase.getInstance().getReference("user");
+        sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
+        a1 = sharedPreferences.getString("phonenumber", "");
+        databaseReference = FirebaseDatabase.getInstance().getReference("user");
         //databaseReference2=FirebaseDatabase.getInstance().getReference("images");
         //query3=databaseReference2;
-        query=databaseReference.orderByChild("mobile").equalTo(a1);
-        query1=databaseReference.orderByChild("mobile").equalTo(a1);
-        editor=sharedPreferences.edit();
-        databaseReference1= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
-        query2=databaseReference.orderByChild("cellno").equalTo(a1);
-        date=(Button)findViewById(R.id.date);
+        query = databaseReference.orderByChild("mobile").equalTo(a1);
+        query1 = databaseReference.orderByChild("mobile").equalTo(a1);
+        editor = sharedPreferences.edit();
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("Matrimony_Details");
+        query2 = databaseReference.orderByChild("cellno").equalTo(a1);
+        //    date=(Button)findViewById(R.id.date);
         slide();
         slide1();
         slide2();
-        signout=(Button)findViewById(R.id.signout);
+        signout = (Button) findViewById(R.id.signout);
         //check();
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                editor.putString("phonenumber","");
+                editor.putString("phonenumber", "");
                 editor.commit();
                 finish();
 
-                Intent i1=new Intent(Main2Activity.this,logIn.class);
+                Intent i1 = new Intent(Main2Activity.this, logIn.class);
                 startActivity(i1);
             }
         });
         t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Main2Activity.this,Business_catalogue.class);
+                Intent i = new Intent(Main2Activity.this, Business_catalogue.class);
                 startActivity(i);
 
             }
@@ -110,72 +110,64 @@ Button signout,date;
             @Override
             public void onClick(View v) {
 
-                 sdf = new SimpleDateFormat("yyyyMMdd");
-                 currentDateandTime = sdf.format(new Date());
+                sdf = new SimpleDateFormat("yyyyMMdd");
+                currentDateandTime = sdf.format(new Date());
 
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
-                        {
-                            user1=dataSnapshot1.getValue(user.class);
-                            verify=user1.getMat_exp();
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            user1 = dataSnapshot1.getValue(user.class);
+                            verify = user1.getMat_exp();
                             //Toast.makeText(getApplicationContext(),user1.getMat_exp(),Toast.LENGTH_SHORT).show();
-                            if (Integer.parseInt(currentDateandTime)<=Integer.parseInt(user1.mat_exp))
-                            {FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                  //  up1 up=dataSnapshot.getValue(up1.class);
-                                    if (dataSnapshot.getChildrenCount() == 0)
-                                    {
-                                        Intent i1=new Intent(Main2Activity.this,NR.class);
-                                        startActivity(i1);
-                                        finish();
+                            if (Integer.parseInt(currentDateandTime) <= Integer.parseInt(user1.mat_exp)) {
+                                FirebaseDatabase.getInstance().getReference("Matrimony_Details").orderByChild("cellno").equalTo(a1).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        //  up1 up=dataSnapshot.getValue(up1.class);
+                                        if (dataSnapshot.getChildrenCount() == 0) {
+                                            Intent i1 = new Intent(Main2Activity.this, NR.class);
+                                            startActivity(i1);
+                                            finish();
+                                        } else {
+                                            Intent i1 = new Intent(Main2Activity.this, Matrimony_info.class);
+                                            //Toast.makeText(getApplicationContext(),up.getSex(),Toast.LENGTH_SHORT).show();
+                                            startActivity(i1);
+                                            finish();
+                                        }
                                     }
-                                    else
-                                    {
-                                        Intent i1=new Intent(Main2Activity.this,Matrimony_info.class);
-                                        //Toast.makeText(getApplicationContext(),up.getSex(),Toast.LENGTH_SHORT).show();
-                                        startActivity(i1);
-                                        finish();
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
                                     }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                }
-                            });
+                                });
                                /* Intent i1=new Intent(Main2Activity.this,Matrimony.class);
                                 startActivity(i1);*/
-                            }
-                            else if (verify.equals("0"))
-                            {
-                                AlertDialog.Builder builder=new AlertDialog.Builder(Main2Activity.this);
+                            } else if (verify.equals("0")) {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
                                 builder.setTitle("only prmium members");
                                 builder.setMessage("click payup to pay fee for entering matrimony");
                                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(getApplicationContext(),"it will leads to payment page",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "it will leads to payment page", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 builder.create().show();
-                            }
-                            else
-                            {
-                                AlertDialog.Builder builder=new AlertDialog.Builder(Main2Activity.this);
+                            } else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Main2Activity.this);
                                 builder.setTitle("premium membership expired");
                                 builder.setMessage("finish the payment for continue matrimony service");
                                 builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Toast.makeText(getApplicationContext(),"it will leads to payment page",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "it will leads to payment page", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                                 builder.create().show();
                             }
-                    }
+                        }
                     }
 
                     @Override
@@ -188,13 +180,13 @@ Button signout,date;
         t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k= new Intent(Main2Activity.this,Work_Portal.class);
+                Intent k = new Intent(Main2Activity.this, Work_Portal.class);
                 startActivity(k);
 
 
             }
         });
-        date.setOnClickListener(new View.OnClickListener() {
+/*        date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i1=new Intent(Main2Activity.this,BusinessPortal.class);
@@ -202,6 +194,8 @@ Button signout,date;
             }
         });
 
+
+ */
     }
     private void check()
     {
@@ -252,7 +246,7 @@ private void init()
         public void run() {
             handler.post(Update);
         }
-    }, 3000, 3000);
+    }, 9000, 9000);
     indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -301,7 +295,7 @@ private void init1()
         public void run() {
             handler.post(Update);
         }
-    }, 3000, 3000);
+    }, 9000, 9000);
     indicator1.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -351,7 +345,7 @@ private void init1()
             public void run() {
                 handler.post(Update);
             }
-        }, 3000, 3000);
+        }, 9000, 9000);
         indicator2.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
