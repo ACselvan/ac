@@ -3,6 +3,7 @@ package com.e.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -39,6 +41,7 @@ import java.util.TimerTask;
 public class Main2Activity extends AppCompatActivity {
 TextView t1,t2,t3;
 Button signout,date;
+    private CardView linear_business,linear_job,linear_matrimony;
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String dat;
@@ -65,6 +68,9 @@ Button signout,date;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        linear_business=findViewById(R.id.linear_business);
+        linear_job=findViewById(R.id.linear_job);
+        linear_matrimony=findViewById(R.id.linear_matrimony);
         t1 = findViewById(R.id.t1);
         t2 = findViewById(R.id.t2);
         t3 = findViewById(R.id.t3);

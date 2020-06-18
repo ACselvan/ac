@@ -26,10 +26,13 @@ android:layout_weight="2"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/linear_business"
                 android:layout_width="match_parent"
+                app:cardElevation="4dp"
                 android:layout_height="match_parent" >
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -66,6 +69,7 @@ android:layout_weight="2"
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -74,6 +78,7 @@ android:layout_weight="2"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/linear_matrimony"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
@@ -123,10 +128,12 @@ android:layout_weight="2"
             android:layout_weight="4">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/linear_job"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
 
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
