@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +51,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
     private ViewHolderMatrimony adapter;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
