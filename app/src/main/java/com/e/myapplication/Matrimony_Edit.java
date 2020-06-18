@@ -1,9 +1,11 @@
 package com.e.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -84,6 +86,8 @@ private     TextView cellno,sex;
 
             @Override
             public void onClick(View view) {
+                if (!name.getText().toString().equals("")&&!age.getText().toString().equals("")&&!height.getText().toString().equals("")&&!comapny.getText().toString().equals("")&&!income.getText().toString().equals("")&&!education.getText().toString().equals("")&&!job.getText().toString().equals("")&&!cellno.getText().toString().equals("")&&!mothername.getText().toString().equals("")&&!siblings.getText().toString().equals(""))
+                {
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,6 +103,7 @@ private     TextView cellno,sex;
                             {
                              a1=radioButton.getText().toString();
                             }
+
                             snapshot.getRef().child("name").setValue(name.getText().toString());
                             snapshot.getRef().child("age").setValue(age.getText().toString());
                             snapshot.getRef().child("height").setValue(height.getText().toString());
@@ -119,6 +124,21 @@ private     TextView cellno,sex;
 
                     }
                 });
+                }
+
+                else
+                {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(Matrimony_Edit.this);
+                    builder.setTitle("Empty Field");
+                    builder.setMessage("Enter all fields");
+                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    builder.create().show();
+                }
             }
         });
     }

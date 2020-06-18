@@ -1,9 +1,11 @@
 package com.e.myapplication;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -65,8 +67,25 @@ public class Employportal extends AppCompatActivity {
                 Numm=q5.getText().toString().trim();
                 String id = Employer_details.push().getKey();
                 Dttmm="Date:"+datechar+",  time:"+timechar;
+                if (!Namee.equals("")&&!Qualificationn.equals("")&&!Addresss.equals("")&&!Numm.equals("")&&!datechar.equals("")&&!timechar.equals(""))
+                {
                 Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp);
                 Employer_details.child(id).setValue(Employportalupload);
+                }
+
+                else
+                {
+                    AlertDialog.Builder builder=new AlertDialog.Builder(Employportal.this);
+                    builder.setTitle("Empty Field");
+                    builder.setMessage("Enter all fields");
+                    builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    builder.create().show();
+                }
             }
         });
         }

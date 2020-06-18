@@ -68,7 +68,7 @@ public class Getting_Business_details extends AppCompatActivity {
         image_business=(ImageView) findViewById(R.id.business_image);
         image_progress=(ProgressBar)findViewById(R.id.business_progress);
         get_image=(Button)findViewById(R.id.get_image_business);
-        t7=findViewById(R.id.t7);
+
         t8=findViewById(R.id.t8);
         //t9=findViewById(R.id.t9);
         t10=findViewById(R.id.t10);

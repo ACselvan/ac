@@ -122,7 +122,7 @@
                 android:id="@+id/t5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Height" />
+                android:text="Height in cm" />
 
 
             <EditText
@@ -155,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="company" />
+                 />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -222,7 +222,7 @@
 
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Job" />
+                 />
         </LinearLayout>
 
 
@@ -296,25 +296,7 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="cell no" />
-
-            <EditText
-                android:id="@+id/t10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
 
 
 

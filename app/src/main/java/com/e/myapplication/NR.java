@@ -1,10 +1,12 @@
 package com.e.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -97,7 +99,7 @@ public class NR extends AppCompatActivity {
         Fn = findViewById(R.id.Fn);
         Mn = findViewById(R.id.Mn);
         sbl = findViewById(R.id.sbl);
-        t10 = findViewById(R.id.t10);
+
         uploadHoroscope = findViewById(R.id.uploadHoroscope);
         uploadimage = findViewById(R.id.uploadimage);
         button4 = findViewById(R.id.button4);
@@ -164,11 +166,11 @@ public class NR extends AppCompatActivity {
                     Fnn = Fn.getText().toString().trim();
                     sbll = sbl.getText().toString().trim();
                     companyy=company.getText().toString().trim();
-                    t100 = t10.getText().toString().trim();
+
                    String id = Matrimony_details.push().getKey();
 
 
-                        if((HoroscopeImage!=null)&&(profileImage!=null)) {
+                        if((HoroscopeImage!=null)&&(profileImage!=null)&&!Namee.equals("")&&!Sexx.equals("")&&!Heightt.equals("")&&!Incomee.equals("")&&!educationn.equals("")&&!Jobb.equals("")&&Mnn.equals("")&&!Fnn.equals("")&&!sbll.equals("")&&!companyy.equals("")&&!Agee.equals("")) {
 
                             String idd = Matrimony_details.push().getKey();
                             //  String imageurl = uri.toString();
@@ -184,7 +186,16 @@ public class NR extends AppCompatActivity {
 
                   else
                     {
-                        Toast.makeText(getApplicationContext(),"No filee selected",Toast.LENGTH_SHORT).show();
+                        AlertDialog.Builder builder=new AlertDialog.Builder(NR.this);
+                        builder.setTitle("Empty Field");
+                        builder.setMessage("Enter all fields");
+                        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        builder.create().show();
                     }
 
                 }
