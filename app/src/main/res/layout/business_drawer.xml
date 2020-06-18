@@ -7,6 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:id="@+id/profileimage_drawer_business"/>
     <TextView
         android:id="@+id/drawer_firmname_business"
