@@ -24,10 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Employportal extends AppCompatActivity {
-    EditText q1,q2,q3,q4,q5;
+    EditText q1,q2,q3,q4,q5,city_edit;
     Button b1,datepicker,timepicker;
     DatabaseReference Employer_details;
-    String Namee,Qualificationn,Addresss,Dttmm,Numm;
+    String Namee,Qualificationn,Addresss,Dttmm,Numm,city;
     TextView date_text,time_text;
     String datechar="",timechar="",exp;
     @Override
@@ -41,6 +41,7 @@ public class Employportal extends AppCompatActivity {
         q3=findViewById(R.id.q3);
         q4=findViewById(R.id.q4);
         q5=findViewById(R.id.q5);
+        city_edit=findViewById(R.id.city_job);
         date_text=(TextView)findViewById(R.id.date_text);
         time_text=(TextView)findViewById(R.id.time_text);
         b1=findViewById(R.id.b1);
@@ -60,6 +61,7 @@ public class Employportal extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                city=city_edit.getText().toString().trim();
                 Namee=q1.getText().toString().trim();
                 Qualificationn=q2.getText().toString().trim();
                 Addresss=q3.getText().toString().trim();
@@ -67,9 +69,9 @@ public class Employportal extends AppCompatActivity {
                 Numm=q5.getText().toString().trim();
                 String id = Employer_details.push().getKey();
                 Dttmm="Date:"+datechar+",  time:"+timechar;
-                if (!Namee.equals("")&&!Qualificationn.equals("")&&!Addresss.equals("")&&!Numm.equals("")&&!datechar.equals("")&&!timechar.equals(""))
+                if (!Namee.equals("")&&!Qualificationn.equals("")&&!Addresss.equals("")&&!Numm.equals("")&&!datechar.equals("")&&!timechar.equals("")&&!city.equals(""))
                 {
-                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp);
+                Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp,city);
                 Employer_details.child(id).setValue(Employportalupload);
                 }
 

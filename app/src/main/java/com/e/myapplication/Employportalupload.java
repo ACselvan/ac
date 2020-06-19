@@ -2,16 +2,25 @@ package com.e.myapplication;
 
 class Employportalupload {
 
-    String name; String qualification; String address; String dttm; String num;String exp;
+    String name; String qualification; String address; String dttm; String num;String exp;String city;
 
 
-    public Employportalupload(String namee, String qualificationn, String addresss, String dttmm, String numm,String exp) {
+    public Employportalupload(String namee, String qualificationn, String addresss, String dttmm, String numm,String exp,String city) {
         this.name=namee;
         this.qualification=qualificationn;
         this.address=addresss;
         this.dttm=dttmm;
         this.num=numm;
         this.exp=exp;
+        this.city=city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getExp() {

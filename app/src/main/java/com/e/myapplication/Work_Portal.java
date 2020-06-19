@@ -3,12 +3,14 @@ package com.e.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,9 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Work_Portal extends AppCompatActivity {
 ImageView hire,work;
@@ -32,6 +37,13 @@ ImageView hire,work;
     private SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
+    private static ViewPager viewPager2;
+    private static int currentPage = 0;
+    private static int NUM_PAGES = 0;
+    private CirclePageIndicator indicator2;
+    private String[] urls2;
+    private images up;
+    String a11,a2,a3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +54,7 @@ ImageView hire,work;
         query=databaseReference.orderByChild("mobile").equalTo(a1);
         editor=sharedPreferences.edit();
         hire=(ImageView)findViewById(R.id.work_hire);
+        slide2();
         work=(ImageView)findViewById(R.id.work_employee);
         hire.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +118,76 @@ ImageView hire,work;
                 });
             }
         });
+    }
+    private void slide2()
+    {
+        FirebaseDatabase.getInstance().getReference("job_portal_images").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    up = dataSnapshot1.getValue(images.class);
+                    a11=up.getImage();
+                    a2=up.getImage1();
+                    a3=up.getImage2();
+                }
+                urls2 = new String[]{a11,a2,a3};
+                init2();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void init2()
+    {
+        viewPager2=findViewById(R.id.view_pager_job);
+        viewPager2.setAdapter(new ViewPagerAdapter(Work_Portal.this,urls2));
+        indicator2 = (CirclePageIndicator)
+                findViewById(R.id.indicator_job);
+
+        indicator2.setViewPager(viewPager2);
+
+        final float density = getResources().getDisplayMetrics().density;
+        indicator2.setRadius(5 * density);
+
+        NUM_PAGES = urls2.length;
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                viewPager2.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 9000, 9000);
+        indicator2.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
+
     }
 }
 //.

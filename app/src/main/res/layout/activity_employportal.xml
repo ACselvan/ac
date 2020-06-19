@@ -89,7 +89,27 @@
             android:text="Name" />
 
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City" />
+
+
+            <EditText
+                android:id="@+id/city_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,14 +146,7 @@
             android:inputType="textPersonName"
             android:text="Name" />
     </LinearLayout>
-    <Button
-        android:id="@+id/b1"
-        android:layout_marginTop="30dp"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="submit"
-        android:layout_gravity="center"
-        android:background="@drawable/button"/>
+
     </LinearLayout>
 
 
@@ -215,6 +228,14 @@
             android:background="@drawable/button"
             android:text="Date picker" />
     </LinearLayout>
+        <Button
+            android:id="@+id/b1"
+            android:layout_marginTop="30dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:layout_gravity="center"
+            android:background="@drawable/button"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

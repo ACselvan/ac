@@ -36,6 +36,7 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
         holder.date_job.setText(emp.get(position).getDttm());
         holder.number_job.setText(emp.get(position).getNum());
         holder.address_job.setText(emp.get(position).getAddress());
+        holder.city.setText(emp.get(position).getCity());
        // Picasso.with(context).load(list.get(position).getImageurl()).into(holder.job_image);
     }
 
@@ -45,7 +46,7 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
     }
 
     public class myViewHolder extends RecyclerView.ViewHolder {
-        TextView name_job,qualification_job,date_job,number_job,address_job;
+        TextView name_job,qualification_job,date_job,number_job,address_job,city;
         //ImageView job_image;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +55,7 @@ public class ViewHolderJob extends RecyclerView.Adapter<ViewHolderJob.myViewHold
             date_job=(TextView)itemView.findViewById(R.id.date_job);
             number_job=(TextView)itemView.findViewById(R.id.number_job);
             address_job=(TextView)itemView.findViewById(R.id.address_job);
+            city=(TextView)itemView.findViewById(R.id.city_job_item);
             //job_image=(ImageView)itemView.findViewById(R.id.job_image);
         }
     }

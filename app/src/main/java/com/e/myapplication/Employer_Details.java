@@ -1,18 +1,27 @@
 package com.e.myapplication;
 
 public class Employer_Details {
-    private String address,dttm,name,num,qualification,exp;
+    private String address,dttm,name,num,qualification,exp,city;
     public Employer_Details() {
     }
 
 
-    public Employer_Details(String address, String dttm, String name, String num, String qualification,String exp) {
+    public Employer_Details(String address, String dttm, String name, String num, String qualification,String exp,String city) {
         this.address = address;
         this.dttm = dttm;
         this.name = name;
         this.num = num;
         this.qualification = qualification;
         this.exp = exp;
+        this.city=city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getExp() {
