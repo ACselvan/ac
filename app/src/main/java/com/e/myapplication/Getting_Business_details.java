@@ -13,6 +13,8 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -132,7 +135,9 @@ public class Getting_Business_details extends AppCompatActivity {
                 // Upload upload=new Upload(Firmname,Address,Contact_number,category,Description,Proprietor_name);
                 Upload upload = new Upload(Address, Contact_number, category, Firmname, Description, Proprietor_name, imageurl, city);
                 Business_details.child(id).setValue(upload);
-                Toast.makeText(getApplicationContext(), imageurl, Toast.LENGTH_SHORT).show();
+                Intent i1=new Intent(Getting_Business_details.this,Business_catalogue.class);
+                startActivity(i1);
+                finish();
             }
 else {
                 AlertDialog.Builder builder=new AlertDialog.Builder(Getting_Business_details.this);
@@ -228,5 +233,35 @@ else {
         ContentResolver cr= getContentResolver();
         MimeTypeMap mime =MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Getting_Business_details.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Getting_Business_details.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

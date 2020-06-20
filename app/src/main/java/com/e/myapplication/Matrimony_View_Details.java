@@ -3,10 +3,16 @@ package com.e.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,11 +28,14 @@ public class Matrimony_View_Details extends AppCompatActivity {
     private Query query2;
     private String phonenumber;
     private up1 up;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matrimony__view__details);
         phonenumber= getIntent().getStringExtra("phonenumber");
+        sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         profilimage=findViewById(R.id.profileimage_drawer_matrimony_details);
         name=findViewById(R.id.drawer_name_matrimony);
         fathername=findViewById(R.id.drawer_fathername_matrimony_details);
@@ -39,10 +48,10 @@ public class Matrimony_View_Details extends AppCompatActivity {
         job=findViewById(R.id.drawer_job_matrimony_details);
         education=findViewById(R.id.drawer_education_matrimony_details);
         height=findViewById(R.id.drawer_height_matrimony_details);
-
+        sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
         query2=databaseReference.orderByChild("cellno").equalTo(phonenumber);
-
+        editor = sharedPreferences.edit();
         query2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -68,5 +77,36 @@ public class Matrimony_View_Details extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Matrimony_View_Details.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Matrimony_View_Details.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

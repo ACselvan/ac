@@ -1,13 +1,19 @@
 package com.e.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,6 +21,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +37,8 @@ public class Employportal extends AppCompatActivity {
     String Namee,Qualificationn,Addresss,Dttmm,Numm,city;
     TextView date_text,time_text;
     String datechar="",timechar="",exp;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,8 @@ public class Employportal extends AppCompatActivity {
         date_text=(TextView)findViewById(R.id.date_text);
         time_text=(TextView)findViewById(R.id.time_text);
         b1=findViewById(R.id.b1);
+        sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         Employer_details = FirebaseDatabase.getInstance().getReference("Employer_Details");
         datepicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +84,9 @@ public class Employportal extends AppCompatActivity {
                 {
                 Employportalupload Employportalupload = new Employportalupload(Namee,Qualificationn,Addresss,Dttmm,Numm,exp,city);
                 Employer_details.child(id).setValue(Employportalupload);
+                Intent i1=new Intent(Employportal.this,Work_Portal.class);
+                startActivity(i1);
+                finish();
                 }
 
                 else
@@ -131,5 +145,36 @@ public class Employportal extends AppCompatActivity {
             },Hour,Minute,false);
             timePickerDialog.show();
         }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Employportal.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Employportal.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
     }
 

@@ -11,12 +11,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,6 +65,7 @@ public class Business_Favourites extends AppCompatActivity implements Navigation
         databaseReference= FirebaseDatabase.getInstance().getReference("Business_fav");
         databaseReference1= FirebaseDatabase.getInstance().getReference("Business_Details");
         query=databaseReference.child(phonenumber);
+        editor = sharedPreferences.edit();
         check();
         matrimony_favourites.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,17 +115,58 @@ private void check()
 
 
 }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Business_Favourites.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Business_Favourites.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
         if (toggle.onOptionsItemSelected(item))
         {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
+    public void onBackPressed()
+    {
+        int backButtonCount=0;
+        backButtonCount++;
+        if(backButtonCount == 1)
+        {
+            Intent i1=new Intent(Business_Favourites.this,Business_info.class);
+            startActivity(i1);
+            finish();
+
+        }
+
     }
 }

@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,6 +68,7 @@ private DatabaseReference databaseReference;
         //Toast.makeText(getApplicationContext(),id_user,Toast.LENGTH_SHORT).show();
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
+        editor = sharedPreferences.edit();
         toggle=new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -142,14 +145,7 @@ private DatabaseReference databaseReference;
             }
         });
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         return false;
@@ -179,6 +175,54 @@ query.addValueEventListener(new ValueEventListener() {
 
     }
 });
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Business_info.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Business_info.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+        if (toggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        int backButtonCount=0;
+        backButtonCount++;
+        if(backButtonCount == 1)
+        {
+            Intent i1=new Intent(Business_info.this,Business_catalogue.class);
+            startActivity(i1);
+            finish();
+
+        }
 
     }
 }

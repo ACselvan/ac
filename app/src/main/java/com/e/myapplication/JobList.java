@@ -5,9 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +34,8 @@ public class JobList extends AppCompatActivity {
     ViewHolderJob adapter;
     private SimpleDateFormat sdf;
     private String currentDateandTime;
+    private SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +45,8 @@ public class JobList extends AppCompatActivity {
         databaseReference= FirebaseDatabase.getInstance().getReference("Employer_Details");
         query=FirebaseDatabase.getInstance().getReference("Employer_Details");
         list=new ArrayList<>();
-
+        sharedPreferences = getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         check();
     }
     private void check()
@@ -72,5 +81,35 @@ public class JobList extends AppCompatActivity {
             }
         });
         Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_SHORT).show();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(JobList.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(JobList.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

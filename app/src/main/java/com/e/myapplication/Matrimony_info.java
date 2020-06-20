@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,7 +61,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
         setContentView(R.layout.activity_matrimony_info);
         sharedPreferences=getSharedPreferences("alreadylogged", Context.MODE_PRIVATE);
         phonenumber=sharedPreferences.getString("phonenumber","");
-
+        editor = sharedPreferences.edit();
         recyclerView_matrimony=(RecyclerView)findViewById(R.id.matrimony_recycle);
         recyclerView_matrimony.setLayoutManager(new LinearLayoutManager(this));
         databaseReference= FirebaseDatabase.getInstance().getReference("Matrimony_Details");
@@ -200,14 +202,7 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (toggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -240,5 +235,53 @@ public class Matrimony_info extends AppCompatActivity implements NavigationView.
 
                 }
             });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (toggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Matrimony_info.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Matrimony_info.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        int backButtonCount=0;
+        backButtonCount++;
+        if(backButtonCount == 1)
+        {
+            Intent i1=new Intent(Matrimony_info.this,Main2Activity.class);
+            startActivity(i1);
+            finish();
+
+        }
+
     }
 }

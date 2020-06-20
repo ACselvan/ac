@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -88,6 +91,7 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
                 i = 0;
 
                 fileChooser();
+
             }
         });
         uploadimage.setOnClickListener(new View.OnClickListener() {
@@ -278,5 +282,50 @@ Button get_horoscope,upload_horoscope,getimage,uploadimage;
 
                 }
             }}
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_logandhome,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id=item.getItemId();
+        if (id==R.id.logout)
+        {
+            FirebaseAuth.getInstance().signOut();
+            editor.putString("phonenumber", "");
+            editor.commit();
+
+
+            Intent i1 = new Intent(Matrimony_Image_Edit.this, logIn.class);
+
+            startActivity(i1);
+            finish();
+        }
+        if (id==R.id.home1)
+        {
+            Intent i1 = new Intent(Matrimony_Image_Edit.this, Main2Activity.class);
+            startActivity(i1);
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        int backButtonCount=0;
+        backButtonCount++;
+        if(backButtonCount == 1)
+        {
+            Intent i1=new Intent(Matrimony_Image_Edit.this,Matrimony_info.class);
+            startActivity(i1);
+            finish();
+
+        }
+
     }
 }
