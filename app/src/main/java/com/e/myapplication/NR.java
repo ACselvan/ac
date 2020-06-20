@@ -183,8 +183,9 @@ public class NR extends AppCompatActivity {
                             HoroscopeImage=null;
                             profileImage=null;
 
-                            Intent i = new Intent(NR.this, Matrimonydisplay.class);
+                            Intent i = new Intent(NR.this, Matrimony_info.class);
                             startActivity(i);
+                            finish();
                         }
 
                   else
